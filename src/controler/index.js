@@ -1,39 +1,49 @@
-// import { modelo } from '../model/index.js'
-// import { components, vista} from '../view/index.js';
+import { model } from '../model/index.js';
+import { components, userView} from '../views/index.js';
 
-// export const controler = {
-//     initControler: () => {
-//       vista.initView()
-//     },
+export const controler = {
+    initControlerSignIn: () => {
+        userView.initSignIn()
+    },
+
+    newSession: (newSignIn) => {
+      model.verifyUser(newSignIn); 
+    }, 
+
+    initControlerRegister: () =>{
+        userView.initRegister()
+    },
+
+    newUser: (newUserFile) => {
+      model.registerUser(newUserFile); 
+    }, 
   
-//     agregarMarcador: (nuevomarcador) => {
-//       modelo.agregaMarcador(nuevomarcador) 
-//       vista.representarMarcadores(controlador.obtenerMarcadores()); 
-//     }, 
+    changeTmp: (hash) => {
+      const sectionMain = document.getElementById('sectionPages');
+      sectionMain.innerHTML = '';
   
-//     obtenerMarcadores:() => {
-//       return modelo.obtenerMarcadores();
-//     },
-  
-//     changeTmp: (hash) => {
-//       // const id = hash.split('/')[1];
-//       const sectionMain = document.getElementById('container');
-//       sectionMain.innerHTML = '';
-  
-//       switch (hash) {
-//           case '':
-//           case '#':
-//           case '#/':
-//               return sectionMain.appendChild(components.login());
-//           case '#/home':
-//               sectionMain.appendChild(components.home())
-//               controlador.initControl()
-//           // case '#/accesorios':
-//           // case '#/lugares':
-//               // { return sectionMain.appendChild(components[id]()); }
-//               break;
-//           default:
-//               return sectionMain.appendChild(components.different())
-//       }
-//     }
-//   }
+      switch (hash) {
+          case '':
+          case '#':
+          case '#/home':  
+                sectionMain.appendChild(components.home());
+              break;
+          case '#/signin':
+                sectionMain.appendChild(components.signIn());
+                controler.initControlerSignIn()
+              break;  
+          case '#/register':
+                sectionMain.appendChild(components.register())
+                controler.initControlerRegister()
+              break;
+          case '#/profile':
+                sectionMain.appendChild(components.profile());
+              break;
+          // case '#/lugares':
+              // { sectionMain.appendChild(components[id]()); }
+              break;
+          default:
+              sectionMain.appendChild(components.different())
+      }
+    }
+  }
