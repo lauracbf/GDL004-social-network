@@ -16,10 +16,16 @@ export const controler = {
 
     newUser: (newUserFile) => {
       model.registerUser(newUserFile); 
+      model.registerInCloud(newUserFile); 
     }, 
+
+    initControlerGoogleUser: () => {
+      userView.initAccessGoogle()
+    },
+
     googleUser: (userGoogle) => {
       model.ingresoGoogle(userGoogle);
-    }
+    },
   
     changeTmp: (hash) => {
       const sectionMain = document.getElementById('sectionPages');
@@ -34,6 +40,7 @@ export const controler = {
           case '#/signin':
                 sectionMain.appendChild(components.signIn());
                 controler.initControlerSignIn()
+                controler.initControlerGoogleUser()
               break;  
           case '#/register':
                 sectionMain.appendChild(components.register())

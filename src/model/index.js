@@ -13,8 +13,11 @@ export const model = {
     
 
     registerUser: (newUserFile) => {
-    
-        firebase.auth().createUserWithEmailAndPassword(newUserFile.userEmail, newUserFile.userPass).catch(function(error) {
+     
+      const email = newUserFile.userEmail;
+      const pass = newUserFile.userPass;
+
+        firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
             let errorCode = error.code;
             let errorMessage = error.message;
             alert(errorMessage)
@@ -26,12 +29,26 @@ export const model = {
             }).catch(function(error){
               //An error happened.
             });
-          });   
-
+          });  
     },
-  
 
-     ingresoGoogle: (googleUser) => {
+    registerInCloud: (newUserFile) => {
+
+      let db = firebase.firestore();    
+        db.collection("users").add({
+          first: newUserFile.userEmail,
+          last: newUserFile.userPass,
+        })
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+    },
+
+    ingresoGoogle: (userGoogle) => {
+
       if(!firebase.auth().currentUser){
 
         var provider = new firebase.auth.GoogleAuthProvider();
@@ -58,5 +75,5 @@ export const model = {
         });
       }else
       firebase.auth().signOut();
-     }
+    }
 }
