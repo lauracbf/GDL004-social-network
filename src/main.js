@@ -21,14 +21,10 @@ var firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
 
-// Initialize Cloud Firestore through Firebase
-// firebase.initializeApp({
-//     apiKey: '"AIzaSyA87a5JfZWcgDb_HlHIKR5-TDIF8i52uaI"',
-//     authDomain: 'fir-usuarios-3375c.firebaseapp.com',
-//     projectId: 'fir-usuarios-3375c'
-//   });
+
   
-  var db = firebase.firestore();
+
 
 

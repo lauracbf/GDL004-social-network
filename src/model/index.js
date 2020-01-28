@@ -26,7 +26,7 @@ export const model = {
             }).catch(function(error){
               //An error happened.
             });
-          });
+          });   
 
     },
   
