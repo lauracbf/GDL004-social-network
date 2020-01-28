@@ -49,6 +49,21 @@ const userView = {
         });
     },
 
+
+
+
+    accessGoogle: () => {
+      const userInput = document.getElementById('social-sign-in');
+      console.log(userInput);
+
+      const userGoogle = document.getElementById("button-Google");
+      
+      userGoogle.addEventListener("click",ingresoGoogle,false);
+     // return userGoogle;
+      controler.newUser(newUserFile);
+
+   },
+
 }
 
 

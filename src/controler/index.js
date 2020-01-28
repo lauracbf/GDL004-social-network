@@ -17,6 +17,9 @@ export const controler = {
     newUser: (newUserFile) => {
       model.registerUser(newUserFile); 
     }, 
+    googleUser: (userGoogle) => {
+      model.ingresoGoogle(userGoogle);
+    }
   
     changeTmp: (hash) => {
       const sectionMain = document.getElementById('sectionPages');
