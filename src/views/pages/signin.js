@@ -17,7 +17,7 @@ export default() => {
                 <p class="">Sign in with:</p>
 
                 <ul class="social-sign-in">
-                    <li><a href="#"><i class="fab fa-google"></a></i></li>
+                    <li><a href="#"><id= "button-Google"><i class="fab fa-google"></a></i></li>
                     <li><a href="#"><i class="fab fa-facebook-f"></a></i></li>
                     <li><a href="#"><i class="fab fa-github"></i></a></i></li>
                 </ul>
