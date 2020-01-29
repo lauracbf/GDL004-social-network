@@ -7,17 +7,32 @@ export const model = {
         let errorCode = error.code;
         let errorMessage = error.message;
         alert(errorMessage)
+        }).then( () => {
+          firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              var emailVerified = user.emailVerified;
+        
+              if(emailVerified===true){
+                location.hash = '/profile';
+              }else{
+                alert('Verifica tu correo');
+                location.hash = '/signin';
+              }
+        
+            } else {
+              // User is signed out.
+             console.log('no logueado');
+            }
         });
-     
+        });
+     //Observador??
     },
     
 
     registerUser: (newUserFile) => {
-     
-      const email = newUserFile.userEmail;
-      const pass = newUserFile.userPass;
 
-        firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
+        firebase.auth().createUserWithEmailAndPassword(newUserFile.userEmail, newUserFile.userPass).catch(function(error) {
             let errorCode = error.code;
             let errorMessage = error.message;
             alert(errorMessage)
@@ -25,19 +40,43 @@ export const model = {
           .then(function(){
                 let user = firebase.auth().currentUser;
                 user.sendEmailVerification().then(function(){
-                    //Email sent.
+                    //Email sent. 
+                    alert('Verifica tu correo');  
+                    
             }).catch(function(error){
               //An error happened.
             });
           });  
     },
 
+
+    registerAbout: (newUserInfo) =>{
+
+      let db = firebase.firestore();    
+        db.collection("profile").add({
+          NickName: newUserInfo.userName,
+          Pet: newUserInfo.userPet,
+          About: newUserInfo.userAbout
+        })
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+            alert('Ahora puedes iniciar sesión');
+            location.hash = '/signin';
+
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+
+    },
+
+
     registerInCloud: (newUserFile) => {
 
       let db = firebase.firestore();    
         db.collection("users").add({
-          first: newUserFile.userEmail,
-          last: newUserFile.userPass,
+          Email: newUserFile.userEmail,
+          Password: newUserFile.userPass,
         })
         .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
@@ -45,6 +84,7 @@ export const model = {
         .catch(function(error) {
             console.error("Error adding document: ", error);
         });
+
     },
 
     ingresoGoogle: (userGoogle) => {
@@ -73,7 +113,8 @@ export const model = {
             alert("Es el mismo usuario");
           }
         });
-      }else
-      firebase.auth().signOut();
+      }else{
+        firebase.auth().signOut();
+      } 
     }
 }

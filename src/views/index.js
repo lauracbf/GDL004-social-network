@@ -2,6 +2,8 @@ import Home from './pages/home.js';
 import SignIn from './pages/signin.js';
 import Register from './pages/register.js';
 import Profile from './pages/profile.js';
+import UserData from './pages/userData.js';
+import NotFound from './pages/notFound.js';
 import { controler } from '../controler/index.js';
 
 
@@ -9,7 +11,9 @@ const components = {
     signIn: SignIn,
     register: Register,
     profile: Profile,
-    home: Home
+    home: Home,
+    userData: UserData,
+    notFound: NotFound
 }
 
 const userView = {
@@ -47,6 +51,29 @@ const userView = {
           userInput.reset();
           controler.newUser(newUserFile);
         });
+    },
+
+
+    initUserInfo: (newUserInfo) =>{
+      const userInfo = document.getElementById('userDataForm');
+      console.log(userInfo);
+
+      userInfo.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newUserInfo = {
+          userName: userInfo.userNickName.value,
+          userPet: userInfo.userPet.value,
+          userAbout: userInfo.aboutYou.value
+        }
+        console.log(newUserInfo);
+        userInfo.reset();
+        controler.newUserInformation(newUserInfo);
+      });      
+    },
+
+
+    initProfile: () => {
+
     },
 
 

@@ -26,6 +26,14 @@ export const controler = {
     googleUser: (userGoogle) => {
       model.ingresoGoogle(userGoogle);
     },
+
+    newUserInformation: (newUserInfo) => {
+      model.registerAbout(newUserInfo)
+    },
+
+    initControlerAbout: () =>{
+      userView.initUserInfo()
+    },
   
     changeTmp: (hash) => {
       const sectionMain = document.getElementById('sectionPages');
@@ -49,11 +57,12 @@ export const controler = {
           case '#/profile':
                 sectionMain.appendChild(components.profile());
               break;
-          // case '#/lugares':
-              // { sectionMain.appendChild(components[id]()); }
+          case '#/user-data':
+                sectionMain.appendChild(components.userData());
+                controler.initControlerAbout()
               break;
           default:
-              sectionMain.appendChild(components.different())
+                sectionMain.appendChild(components.notFound());
       }
     }
   }
