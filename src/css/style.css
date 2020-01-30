@@ -1,0 +1,139 @@
+
+
+
+/* Primera pantalla*/
+
+.f-open {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.white {
+  color:white;
+}
+
+.main-container {
+  height: 100vh;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(0,0,0,0.8) 100%);
+  background-image: url("https://source.unsplash.com/1600x900/?pets");
+  width: 100vw;
+  background-size:cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 10;
+}
+
+.content {
+  margin: 0 auto;
+  position: relative;
+  z-index:1000;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 100px 1fr 100px;
+  justify-items: center;
+  max-width:1440px;
+}
+
+
+
+.content .title {
+  align-self: flex-end;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 2px 2px rgb(41, 41, 41);
+  padding: 8px;
+  animation: opacit 2s ease-out;
+}
+
+
+.content .sub-title {
+  align-self: center;
+  font-size:1rem;
+  color:white;
+  text-align: center;
+  padding: 10px;
+  animation: opacit 2s ease-out;
+}
+
+@media only screen and (min-width:768px){
+
+  .content {
+    align-items: center;
+  }
+  .content .title {
+    align-self: center;
+    font-size:4rem;
+    padding: 0 2rem;
+  }
+  .content .sub-title {
+    font-size: 2rem;
+    padding: 3rem;
+  } 
+  .content-start{
+    margin: 1rem;
+  }
+  }
+  
+
+.content .cta-start {
+  background: linear-gradient(to right, rgba(39,134,207,1) 0%, rgba(151,67,230,1) 100%);
+  color:white;
+  padding:1rem;
+  border-radius: 20px;
+  width: 70%;
+  max-width: 150px;
+  text-decoration:none;
+  text-align:center;
+  box-shadow: -2px 4px 22px -5px rgba(0,0,0,0.75);
+  align-self: flex-start;
+  animation: opacit 2s ease-out;
+  
+}
+
+.content .cta-start:hover {
+  background: linear-gradient(to right, rgb(28, 94, 145) 0%, rgb(105, 47, 160) 100%);
+}
+
+
+.logo{
+  align-self: center;
+  border-radius: 50%;
+  background: #fcfcfc;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo img  {
+  margin-top: 6rem;
+  height: 50px;
+}
+
+.text-logo {
+  font-family: 'Satisfy', cursive;
+  font-size: 2rem;
+  color: white;
+}
+
+
+.footer {
+  align-self: flex-start;
+  text-align:center;
+  padding: 0 3rem;
+}
+
+
+@keyframes opacit {
+  from{
+    opacity: 0;
+  }
+  to {
+    opacity:1;
+  }
+}
+
