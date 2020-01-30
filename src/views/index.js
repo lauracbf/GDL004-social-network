@@ -54,27 +54,27 @@ const userView = {
     },
 
 
-    initUserInfo: (newUserInfo) =>{
+    initUserInfo: () =>{
       const userInfo = document.getElementById('userDataForm');
       console.log(userInfo);
 
       userInfo.addEventListener('submit', (e) => {
         e.preventDefault();
-        const newUserInfo = {
+        const newUser = {
           userName: userInfo.userNickName.value,
           userPet: userInfo.userPet.value,
           userAbout: userInfo.aboutYou.value
         }
-        console.log(newUserInfo);
+        console.log(newUser);
         userInfo.reset();
-        controler.newUserInformation(newUserInfo);
+        controler.newUserInformation(newUser);
       });      
     },
 
 
-    initProfile: () => {
+    // initProfile: () => {
 
-    },
+    // },
 
 
     initAccessGoogle: () => {

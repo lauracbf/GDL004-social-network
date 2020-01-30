@@ -27,8 +27,8 @@ export const controler = {
       model.ingresoGoogle(userGoogle);
     },
 
-    newUserInformation: (newUserInfo) => {
-      model.registerAbout(newUserInfo)
+    newUserInformation: (newUser) => {
+      model.registerAbout(newUser)
     },
 
     initControlerAbout: () =>{

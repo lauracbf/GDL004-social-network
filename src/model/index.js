@@ -26,7 +26,6 @@ export const model = {
             }
         });
         });
-     //Observador??
     },
     
 
@@ -42,7 +41,7 @@ export const model = {
                 user.sendEmailVerification().then(function(){
                     //Email sent. 
                     alert('Verifica tu correo');  
-                    
+                    location.hash = '/user-data';
             }).catch(function(error){
               //An error happened.
             });
@@ -50,22 +49,21 @@ export const model = {
     },
 
 
-    registerAbout: (newUserInfo) =>{
+    registerAbout: (newUser) =>{
 
       let db = firebase.firestore();    
         db.collection("profile").add({
-          NickName: newUserInfo.userName,
-          Pet: newUserInfo.userPet,
-          About: newUserInfo.userAbout
+          NickName: newUser.userName,
+          Pet: newUser.userPet,
+          About: newUser.userAbout
         })
         .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
             alert('Ahora puedes iniciar sesión');
             location.hash = '/signin';
-
         })
         .catch(function(error) {
-            console.error("Error adding document: ", error);
+            console.error("Error adding document: 1", error);
         });
 
     },
@@ -82,7 +80,7 @@ export const model = {
             console.log("Document written with ID: ", docRef.id);
         })
         .catch(function(error) {
-            console.error("Error adding document: ", error);
+            console.error("Error adding document: 2", error);
         });
 
     },
